@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>home</title>
+    </head>
+    <body>
+        <h1>Registration Form</h1>
+        <div>
+            <label>Firstname <span style="color: red;">*</span></label>
+            <input type="text" name="firstname" id="firstname" placeholder="enter your first name"/>
+            <label id="firstnameerror" style="display:none">Firstname is required</label>
+            <label id="firstnamelengtherror" style="display:none">Firstname should be atleast 3char</label>
+        </div>
+        <div>
+            <label>Lastname<span style="color:red">*</span></label>
+            <input type="text" name="lastname" id="lastname" placeholder="enter your lastname"/>
+            <label id="lastnameerror" style="display:none">Lastname is required</label>
+            <label id="lastnamelengtherror" style="display:none">Lastname should be atleast 3char</label>
+        </div>
+        <div>
+            <label>Email<span style="color:red">*</span></label>
+            <input type="text" name="email" id="email" placeholder="enter your email"/>
+            <label id="emailreqirederror" style="display:none">Email is required</label>
+            <label id="emailvaliderror" style="display:none">Email is not valid</label>
+        </div>
+        <div>
+            <label>Phone<span style="color:red">*</span></label>
+            <input type="text" name="phone" id="phone" placeholder="enter your phone"/>
+        </div>
+        <div>
+            <input type="button" value="submit" onclick="validateForm()"/>
+        </div>
+        <script>
+            function validateForm(){
+                var firstname=document.getElementById('firstname').value;
+                var email=document.getElementById('email').value;
+                var lastname=document.getElementById('lastname').value;
+                var phone=document.getElementById('phone').value;
+
+                var emailpattern=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+if(firstname){
+    if(firstname.length <=3 ){
+        document.getElementById('firstnamelengtherror').style="display:block;color:red";
+    }else{
+        document.getElementById('firstnameerror').style="display:none;color:red";
+
+    }
+}
+if(lastname){
+    if(lastname.length <=3 ){
+        document.getElementById('lastnamelengtherror').style="display:block;color:red";
+    }else{
+        document.getElementById('lastnameerror').style="display:none;color:red";
+
+    }
+}
+else{
+    document.getElementById('lastnamenameerror').style="display:block;color:red";
+}
+
+if(email){
+    let isvalidemail = emailpattern.test(email);
+    if(isvalidemail){
+        document.getElementById('emailvaliderror').style="display:none;color:red";
+
+    }else{
+        document.getElementById('emailvaliderror').style="display:block;color:red";
+        document.getElementById('emailreqirederror').style="display:none;color:red";
+    }
+
+}else{
+    document.getElementById('emailreqirederror').style="display:block;color:red";
+}
+
+//console.log('--Firstname-',firstname,lastname,email,phone);
+console.log('--Firstname-',firstname);
+console.log('--Lastname-',lastname);
+console.log('--Email-',email);
+console.log('--Phone-',phone);
+
+
+            } 
+           
+
+        </script>
+    </body>
+</html>
